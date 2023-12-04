@@ -1,22 +1,22 @@
-import { useRef, useEffect } from "react";
-import { loadGoogleMapsScript } from "../utils/googleAPILoader";
+import React, { useRef, useEffect } from "react";
+import loadGoogleMapsScript from "../utils/googleAPILoader";
 import InputRef from "../reusableComponents/InputRef";
 import { IautoCompleteField } from "../types/mainComps/AutoCompleteField";
-// import _ from "lodash";
 
 const AutoCompleteField: React.FC<IautoCompleteField> = ({
   className,
   type,
   placeholder,
+  uniqueKey,
 }: IautoCompleteField): JSX.Element => {
   const autoCompleteInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    window.initializeAutocomplete = () => {
+    const initializeAutocomplete = () => {
       if (!autoCompleteInputRef.current) return;
 
       const autocomplete = new window.google.maps.places.Autocomplete(
-        autoCompleteInputRef.current!,
+        autoCompleteInputRef.current,
         { types: ["(cities)"], componentRestrictions: { country: "IN" } }
       );
 
@@ -26,12 +26,12 @@ const AutoCompleteField: React.FC<IautoCompleteField> = ({
       });
     };
 
-    loadGoogleMapsScript("initializeAutocomplete");
-
-    return () => {
-      delete window.initializeAutocomplete;
-    };
-  }, []);
+    loadGoogleMapsScript(uniqueKey)
+      .then(initializeAutocomplete)
+      .catch((error: Error) => {
+        console.error("Error loading Google Maps script:", error);
+      });
+  }, [uniqueKey]);
 
   return (
     <InputRef
@@ -39,7 +39,7 @@ const AutoCompleteField: React.FC<IautoCompleteField> = ({
       type={type}
       placeholder={placeholder}
       className={className}
-    ></InputRef>
+    />
   );
 };
 
