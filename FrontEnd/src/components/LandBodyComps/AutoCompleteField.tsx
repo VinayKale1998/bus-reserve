@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import loadGoogleMapsScript from "../utils/googleAPILoader";
-import InputRef from "../reusableComponents/InputRef";
-import { IautoCompleteField } from "../types/mainComps/AutoCompleteField";
+import loadGoogleMapsScript from "../../utils/googleAPILoader";
+import InputRef from "../../reusableComponents/InputRef";
+import { IautoCompleteField } from "../../types/mainComps/AutoCompleteField";
 
 const AutoCompleteField: React.FC<IautoCompleteField> = ({
   className,
