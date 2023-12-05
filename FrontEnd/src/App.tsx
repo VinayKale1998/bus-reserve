@@ -2,7 +2,7 @@ import LandingPage from "./pages/LandingPage";
 
 function App(): JSX.Element {
   return (
-    <main className="">
+    <main className="w-[100vw]">
       <LandingPage />
     </main>
   );
