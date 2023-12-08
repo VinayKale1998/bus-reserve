@@ -1,6 +1,6 @@
 export interface IinputRef {
   type: string;
-  key: string;
+  uniqueKey: string;
   value?: string;
   placeholder: string;
   className: string;

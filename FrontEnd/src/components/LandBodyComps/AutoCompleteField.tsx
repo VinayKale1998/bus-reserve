@@ -6,7 +6,7 @@ const AutoCompleteField: React.FC<IautoCompleteField> = ({
   className,
   type,
   placeholder,
-  key,
+  uniqueKey,
 }: IautoCompleteField): JSX.Element => {
   const autoCompleteInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -34,7 +34,7 @@ const AutoCompleteField: React.FC<IautoCompleteField> = ({
 
   return (
     <InputAutoSuggestion
-      key={key}
+      uniqueKey={uniqueKey}
       ref={autoCompleteInputRef}
       type={type}
       placeholder={placeholder}
