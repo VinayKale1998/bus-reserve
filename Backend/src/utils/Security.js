@@ -4,7 +4,8 @@ const Redis = require("ioredis");
 const helmet = require("helmet");
 const mongoose = require("mongoose");
 const secureApp = express();
-
+const cors = require("cors");
+secureApp.use(cors());
 //connecting with mongoose
 try {
   mongoose.connect(

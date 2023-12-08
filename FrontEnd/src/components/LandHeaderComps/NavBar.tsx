@@ -5,13 +5,13 @@ import Account from "./Account";
 
 const NavBar = () => {
   return (
-    <nav className="min-h-[10vh] bg-slate-100 flex items-center relative">
+    <nav className="min-h-[10vh]  flex items-center relative">
       <Logo
         className=" w-[70px] object-contain"
         src={HeaderLogo}
         alt="Route Rover"
       />
-      <a className="text-black text-xl m-1"> FAQs </a>
+      <a className="text-white  m-1"> FAQs </a>
 
       <Account></Account>
     </nav>

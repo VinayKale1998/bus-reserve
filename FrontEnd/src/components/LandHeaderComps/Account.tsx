@@ -11,9 +11,9 @@ const Account = () => {
     setDropDown((prev) => !prev);
   };
   return (
-    <Card className="Account-Dropdown flex flex-col  relative justify-start items-center ">
+    <Card className="Account-Dropdown flex flex-col  relative justify-start items-center text-white">
       <Button
-        className="Account-butto bg-red-200 p-1 m-1"
+        className="Account-butto  p-1 m-1"
         type="button"
         onClick={clickHandler}
       >
@@ -22,13 +22,13 @@ const Account = () => {
       </Button>
       {showDropDown && (
         <Card className="Dropdown-items flex flex-col  p-1  absolute top-[100%]  ">
-          <Button className="Account-item p-1 m-1 bg-blue-100 " type="button">
+          <Button className="Account-item p-1 m-1  " type="button">
             My Journey
           </Button>
-          <Button className="Account-item p-1 m-1 bg-blue-100" type="button">
+          <Button className="Account-item p-1 m-1 " type="button">
             Cancel Journey
           </Button>
-          <Button className="Account-item p-1 m-1 bg-blue-100" type="button">
+          <Button className="Account-item p-1 m-1 " type="button">
             My Ticket
           </Button>
         </Card>
