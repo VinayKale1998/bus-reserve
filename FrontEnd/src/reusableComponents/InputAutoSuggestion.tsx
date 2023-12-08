@@ -52,7 +52,10 @@ const InputAutoSuggestion = React.forwardRef<HTMLInputElement, IinputRef>(
         {selectionState.suggestions.length > 0 && input !== "" && (
           <div className="flex flex-col w-[20vw] text-xs bg-white rounded-md m-1 p-1">
             {selectionState.suggestions.map((item: IPlaceSuggestion) => (
-              <h1 className="m-1 p-1" key={item.place_id}>
+              <h1
+                className="m-1 p-1 cursor-pointer hover:bg-slate-300 rounded-md"
+                key={item.place_id}
+              >
                 {item.description}
               </h1>
             ))}
