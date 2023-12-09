@@ -8,6 +8,8 @@ interface ISuggestionSelectionState {
   suggestions: IPlaceSuggestion[];
   loading: boolean;
   error: string | null;
+  isSelected: boolean;
+  input: string;
 }
 
 const initialState: ISuggestionSelectionState = {
@@ -16,6 +18,8 @@ const initialState: ISuggestionSelectionState = {
   suggestions: [],
   loading: false,
   error: null,
+  isSelected: false,
+  input: "",
 };
 
 const SuggestionSelectionSlice = createSlice({
@@ -24,6 +28,16 @@ const SuggestionSelectionSlice = createSlice({
   reducers: {
     removeSuggestions(state) {
       state.suggestions = [];
+    },
+    setSelections(state, action: PayloadAction<IPlaceSuggestion>) {
+      state.selectionDescription = action.payload.description;
+      state.selectionPlaceID = action.payload.place_id;
+    },
+    setInput(state, action: PayloadAction<string>) {
+      state.input = action.payload;
+    },
+    setIsSelected(state, action: PayloadAction<boolean>) {
+      state.isSelected = action.payload;
     },
   },
   extraReducers: (builder) => {
