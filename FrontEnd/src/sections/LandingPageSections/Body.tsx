@@ -1,29 +1,31 @@
-import AutoCompleteField from "../../components/LandBodyComps/AutoCompleteField";
-import Suggestions from "../../components/LandBodyComps/Suggestions";
+import FromSuggestionList from "../../components/LandBodyComps/FromSuggestionList";
+import ToSuggestionList from "../../components/LandBodyComps/ToSuggestionList";
+import FromAutoSuggestionField from "../../components/LandBodyComps/FromAutoSuggestionField";
+import ToAutoSuggestionField from "../../components/LandBodyComps/ToAutoSuggestionField";
 
 const Body = () => {
   return (
     <section className=" m-1 p-1 flex  items-start justify-center  overflow-hidden">
       <div>
         {" "}
-        <AutoCompleteField
+        <FromAutoSuggestionField
           uniqueKey="from"
           className="rounded-md w-[20vw] outline-none text-sm p-1 m-1"
           placeholder="From"
           key="Pickup"
           type="text"
-        ></AutoCompleteField>
-        <Suggestions className=""></Suggestions>
+        />
+        <FromSuggestionList className=""></FromSuggestionList>
       </div>
       <div>
-        <AutoCompleteField
+        <ToAutoSuggestionField
           uniqueKey="to"
           className="rounded-md w-[20vw] outline-none text-sm  p-1 m-1"
           type="text"
           key="Destination"
           placeholder="To"
-        ></AutoCompleteField>
-        <Suggestions className=""></Suggestions>
+        ></ToAutoSuggestionField>
+        <ToSuggestionList className=""></ToSuggestionList>
       </div>
     </section>
   );

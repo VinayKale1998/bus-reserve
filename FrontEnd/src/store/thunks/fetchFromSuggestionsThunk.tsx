@@ -2,14 +2,14 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IPlaceSuggestion } from "../../types/mainComps/IplaceSuggestion";
 
-const fetchAutoSuggestion = createAsyncThunk<
+const fetchFromAutoSuggestion = createAsyncThunk<
   IPlaceSuggestion[],
   string,
   {
     rejectValue: string;
   }
 >(
-  "suggestion/fetchAutoSuggestion",
+  "suggestion/fetchFromAutoSuggestion",
   async (input: string, { rejectWithValue }) => {
     const suggestionURL = import.meta.env.VITE_SUGESTION_BASE_URL;
     const params = {
@@ -28,4 +28,4 @@ const fetchAutoSuggestion = createAsyncThunk<
     }
   }
 );
-export { fetchAutoSuggestion };
+export { fetchFromAutoSuggestion };
