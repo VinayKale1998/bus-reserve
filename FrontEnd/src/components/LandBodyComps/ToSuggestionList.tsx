@@ -25,7 +25,7 @@ const ToSuggestionList: FC<ISuggestions> = ({ className }: ISuggestions) => {
     dispatch(SuggestionSelectionSliceActions.setToIsSelected(true));
     dispatch(SuggestionSelectionSliceActions.setToInput(place.description));
     dispatch(
-      SuggestionSelectionSliceActions.setSelections({
+      SuggestionSelectionSliceActions.setToSelections({
         description: place.description,
         place_id: place.place_id,
       })

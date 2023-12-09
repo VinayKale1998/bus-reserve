@@ -4,8 +4,10 @@ import { fetchFromAutoSuggestion } from "../thunks/fetchFromSuggestionsThunk";
 import { fetchToAutoSuggestion } from "../thunks/fetchToSuggestionsThunk";
 
 interface ISuggestionSelectionState {
-  selectionDescription: string;
-  selectionPlaceID: string;
+  fromDescription: string;
+  toDescription: string;
+  fromPlaceId: string;
+  toPlaceId: string;
   fromSuggestions: IPlaceSuggestion[];
   toSuggestions: IPlaceSuggestion[];
   loading: boolean;
@@ -17,8 +19,10 @@ interface ISuggestionSelectionState {
 }
 
 const initialState: ISuggestionSelectionState = {
-  selectionDescription: "",
-  selectionPlaceID: "",
+  fromDescription: "",
+  toDescription: "",
+  fromPlaceId: "",
+  toPlaceId: "",
   fromSuggestions: [],
   toSuggestions: [],
   loading: false,
@@ -41,10 +45,15 @@ const SuggestionSelectionSlice = createSlice({
         state.toSuggestions = [];
       }
     },
-    setSelections(state, action: PayloadAction<IPlaceSuggestion>) {
-      state.selectionDescription = action.payload.description;
-      state.selectionPlaceID = action.payload.place_id;
+    setFromSelections(state, action: PayloadAction<IPlaceSuggestion>) {
+      state.fromDescription = action.payload.description;
+      state.fromPlaceId = action.payload.place_id;
     },
+    setToSelections(state, action: PayloadAction<IPlaceSuggestion>) {
+      state.toDescription = action.payload.description;
+      state.toPlaceId = action.payload.place_id;
+    },
+
     setFromInput(state, action: PayloadAction<string>) {
       state.fromInput = action.payload;
     },
