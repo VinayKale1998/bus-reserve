@@ -3,22 +3,23 @@ import useToAutoSuggestion from "../../hooks/useToAutoSuggestion";
 
 const ToAutoSuggestion = function InputRef({
   type,
-  placeholder,
   className,
   uniqueKey,
 }: IinputRef) {
-  const { input, inputHandler } = useToAutoSuggestion();
+  const { input, inputHandler, focusHandler } = useToAutoSuggestion();
 
   return (
-    <div className="flex flex-col m-1 p-1 space-x-1 space-y-1 items-start">
+    <div className={className}>
+      <label className=" p-1">To</label>
       <input
         type={type}
-        id="from"
+        name="to"
+        id="to"
+        onFocus={focusHandler}
         key={uniqueKey}
         value={input}
+        className=" p-1 outline-none text-sm sm:text-md lg:text-lg xl:text-lg"
         onChange={inputHandler}
-        placeholder={placeholder}
-        className={className}
         autoComplete="off"
       />
     </div>

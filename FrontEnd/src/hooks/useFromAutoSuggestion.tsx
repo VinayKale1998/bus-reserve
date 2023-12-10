@@ -22,8 +22,14 @@ const useFromAutoSuggestion = () => {
     }, 500),
     []
   );
+  const focusHandler: React.FocusEventHandler<HTMLInputElement> = (event) => {
+    const target = event.currentTarget as HTMLInputElement;
+    target.select();
+  };
 
-  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const inputHandler: React.ChangeEventHandler<HTMLInputElement> = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     dispatch(SuggestionSelectionSliceActions.setFromIsSelected(false));
     dispatch(SuggestionSelectionSliceActions.setFromInput(event.target.value));
   };
@@ -38,7 +44,7 @@ const useFromAutoSuggestion = () => {
     }
   }, [selectionState, input]);
 
-  return { input, inputHandler };
+  return { input, inputHandler, focusHandler };
 };
 
 export default useFromAutoSuggestion;

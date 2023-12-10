@@ -35,19 +35,19 @@ const ToSuggestionList: FC<ISuggestions> = ({ className }: ISuggestions) => {
   };
 
   return (
-    <Card className={className}>
+    <div className={className}>
       {selectionState.toSuggestions.length > 0 &&
         input !== "" &&
         selectionState.toIsSelected !== true && (
           <ul className="flex flex-col w-[20vw] text-xs bg-white rounded-md m-1 p-1">
             {selectionState.toSuggestions.map((item: IPlaceSuggestion) => (
               <li
-                className="m-1 p-1 cursor-pointer hover:bg-slate-300 rounded-md"
+                className="m-1 p-1 cursor-pointer hover:bg-slate-300 rounded-md flex items-center"
                 key={item.place_id}
                 data-item-data={JSON.stringify(item)}
                 onClick={selectHandler}
               >
-                <span>
+                <span className="m-1 p-1">
                   <FaCity></FaCity>
                 </span>
                 {item.description}
@@ -57,7 +57,7 @@ const ToSuggestionList: FC<ISuggestions> = ({ className }: ISuggestions) => {
             {selectionState.error && <h1>{selectionState.error}</h1>}
           </ul>
         )}
-    </Card>
+    </div>
   );
 };
 
