@@ -16,6 +16,7 @@ const DatePicker: FC<IDatePicker> = ({ className }: IDatePicker) => {
     formatDate(() => moment(selectedDate).format("DD MMM"));
     formatDay(() => moment(selectedDate).format("ddd"));
   }, [selectedDate]);
+
   return (
     <div className={className}>
       <button
@@ -26,7 +27,6 @@ const DatePicker: FC<IDatePicker> = ({ className }: IDatePicker) => {
       >
         <span>Date</span>
         <span className="text-xl flex space-x-2  items-center">
-          {" "}
           <span>
             <FaRegCalendarAlt />
           </span>

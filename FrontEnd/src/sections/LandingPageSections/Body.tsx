@@ -11,7 +11,7 @@ const Body = () => {
         {" "}
         <FromAutoSuggestionField
           uniqueKey="from"
-          className="rounded-l-3xl w-[20vw] outline-none text-sm p-2 m-1 h-[10vh] bg-white flex flex-col justify-center"
+          className="rounded-l-3xl w-[20vw] outline-none text-sm p-2 m-1 h-[10vh] bg-white flex flex-col justify-center  "
           placeholder="From"
           key="Pickup"
           type="text"
@@ -21,7 +21,7 @@ const Body = () => {
       <div>
         <ToAutoSuggestionField
           uniqueKey="to"
-          className=" rounded-r-3xl w-[20vw] outline-none text-sm p-2 m-1 h-[10vh] bg-white flex flex-col justify-center"
+          className=" rounded-r-3xl w-[20vw] outline-none text-sm p-2 m-1 h-[10vh] bg-white flex flex-col justify-center "
           type="text"
           key="Destination"
           placeholder="To"

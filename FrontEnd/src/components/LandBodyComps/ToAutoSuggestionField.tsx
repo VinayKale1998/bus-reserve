@@ -6,11 +6,28 @@ const ToAutoSuggestion = function InputRef({
   className,
   uniqueKey,
 }: IinputRef) {
-  const { input, inputHandler, focusHandler } = useToAutoSuggestion();
+  const {
+    input,
+    inputHandler,
+    focusHandler,
+    isFocused,
+    blurHandler,
+    divFocusHandler,
+  } = useToAutoSuggestion();
 
   return (
-    <div className={className}>
-      <label className=" p-1">To</label>
+    <div
+      className={`${className} ${
+        isFocused ? "bg-slate-200" : "bg-white"
+      } place-field `}
+      onFocus={divFocusHandler}
+      tabIndex={-1}
+    >
+      <label
+        className={`${input.trim().length === 0 && !isFocused && "text-2xl"}`}
+      >
+        To
+      </label>
       <input
         type={type}
         name="to"
@@ -18,8 +35,11 @@ const ToAutoSuggestion = function InputRef({
         onFocus={focusHandler}
         key={uniqueKey}
         value={input}
-        className=" p-1 outline-none text-sm sm:text-md lg:text-lg xl:text-lg"
+        className={`${
+          !isFocused && input.trim().length === 0 && "hidden"
+        } p-1 outline-none text-sm sm:text-md lg:text-lg xl:text-lg bg-transparent `}
         onChange={inputHandler}
+        onBlur={blurHandler}
         autoComplete="off"
       />
     </div>

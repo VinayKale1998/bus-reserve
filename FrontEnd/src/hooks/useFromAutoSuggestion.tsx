@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFromAutoSuggestion } from "../store/thunks/fetchFromSuggestionsThunk";
 import { SuggestionSelectionSliceActions } from "../store/slices/SuggestionSelectionSlice";
@@ -9,6 +9,7 @@ import { RootState } from "../store/store";
 import React from "react";
 
 const useFromAutoSuggestion = () => {
+  const [isFocused, setFocused] = useState(false);
   const selectionState = useSelector(
     (state: RootState) => state.SuggestionSelectionSlice.fromIsSelected
   );
@@ -27,10 +28,18 @@ const useFromAutoSuggestion = () => {
     target.select();
   };
 
+  const blurHandler: React.ChangeEventHandler<HTMLInputElement> = () => {
+    setFocused(false);
+  };
+  const divFocusHandler: React.FocusEventHandler<HTMLInputElement> = () => {
+    setFocused(true);
+  };
+
   const inputHandler: React.ChangeEventHandler<HTMLInputElement> = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     dispatch(SuggestionSelectionSliceActions.setFromIsSelected(false));
+
     dispatch(SuggestionSelectionSliceActions.setFromInput(event.target.value));
   };
 
@@ -44,7 +53,14 @@ const useFromAutoSuggestion = () => {
     }
   }, [selectionState, input]);
 
-  return { input, inputHandler, focusHandler };
+  return {
+    input,
+    inputHandler,
+    focusHandler,
+    blurHandler,
+    isFocused,
+    divFocusHandler,
+  };
 };
 
 export default useFromAutoSuggestion;

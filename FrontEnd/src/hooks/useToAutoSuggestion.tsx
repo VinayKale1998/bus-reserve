@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchToAutoSuggestion } from "../store/thunks/fetchToSuggestionsThunk";
@@ -10,6 +10,7 @@ import { RootState } from "../store/store";
 import React from "react";
 
 const useToAutoSuggestion = () => {
+  const [isFocused, setFocused] = useState(false);
   const selectionState = useSelector(
     (state: RootState) => state.SuggestionSelectionSlice.toIsSelected
   );
@@ -25,7 +26,14 @@ const useToAutoSuggestion = () => {
   );
   const focusHandler: React.FocusEventHandler<HTMLInputElement> = (event) => {
     const target = event.currentTarget as HTMLInputElement;
+
     target.select();
+  };
+  const blurHandler: React.ChangeEventHandler<HTMLInputElement> = () => {
+    setFocused(false);
+  };
+  const divFocusHandler = () => {
+    setFocused(true);
   };
 
   const inputHandler: React.ChangeEventHandler<HTMLInputElement> = (
@@ -45,7 +53,14 @@ const useToAutoSuggestion = () => {
     }
   }, [selectionState, input]);
 
-  return { input, inputHandler, focusHandler };
+  return {
+    input,
+    inputHandler,
+    focusHandler,
+    blurHandler,
+    isFocused,
+    divFocusHandler,
+  };
 };
 
 export default useToAutoSuggestion;
