@@ -4,6 +4,7 @@ import { AppDispatch, type RootState } from "../../store/store";
 import { FC } from "react";
 import { IPlaceSuggestion } from "../../types/mainComps/IplaceSuggestion";
 import { SuggestionSelectionSliceActions } from "../../store/slices/SuggestionSelectionSlice";
+import { FaCity } from "react-icons/fa";
 
 type ISuggestions = {
   className: string;
@@ -46,6 +47,9 @@ const ToSuggestionList: FC<ISuggestions> = ({ className }: ISuggestions) => {
                 data-item-data={JSON.stringify(item)}
                 onClick={selectHandler}
               >
+                <span>
+                  <FaCity></FaCity>
+                </span>
                 {item.description}
               </li>
             ))}

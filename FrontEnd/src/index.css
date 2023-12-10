@@ -19,3 +19,6 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
+span {
+  user-select: none;
+}

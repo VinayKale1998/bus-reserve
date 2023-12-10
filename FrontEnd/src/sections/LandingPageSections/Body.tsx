@@ -2,17 +2,9 @@ import FromSuggestionList from "../../components/LandBodyComps/FromSuggestionLis
 import ToSuggestionList from "../../components/LandBodyComps/ToSuggestionList";
 import FromAutoSuggestionField from "../../components/LandBodyComps/FromAutoSuggestionField";
 import ToAutoSuggestionField from "../../components/LandBodyComps/ToAutoSuggestionField";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import DatePicker from "../../components/LandBodyComps/DatePicker";
 
 const Body = () => {
-  const fromDescription = useSelector((state: RootState) => {
-    return state.SuggestionSelectionSlice.fromPlaceId;
-  });
-  const toDescription = useSelector((state: RootState) => {
-    return state.SuggestionSelectionSlice.toPlaceId;
-  });
-
   return (
     <section className=" m-1 p-1 flex  items-start justify-center  overflow-hidden">
       <div>
@@ -36,18 +28,7 @@ const Body = () => {
         ></ToAutoSuggestionField>
         <ToSuggestionList className=""></ToSuggestionList>
       </div>
-      {fromDescription && (
-        <h1 className="bg-white rounded-md m-1 p-1">
-          <span>From:</span>
-          {fromDescription}
-        </h1>
-      )}
-      {toDescription && (
-        <h1 className="bg-white rounded-md m-1 p-1">
-          <span>To:</span>
-          {toDescription}
-        </h1>
-      )}
+      <DatePicker />
     </section>
   );
 };

@@ -19,6 +19,7 @@ const FromAutoSuggestion = function InputRef({
         onChange={inputHandler}
         placeholder={placeholder}
         className={className}
+        autoComplete="off"
       />
     </div>
   );

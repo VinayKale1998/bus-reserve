@@ -4,6 +4,7 @@ import { AppDispatch, type RootState } from "../../store/store";
 import { FC } from "react";
 import { IPlaceSuggestion } from "../../types/mainComps/IplaceSuggestion";
 import { SuggestionSelectionSliceActions } from "../../store/slices/SuggestionSelectionSlice";
+import { FaCity } from "react-icons/fa";
 
 type ISuggestions = {
   className: string;
@@ -41,11 +42,14 @@ const FromSuggestionList: FC<ISuggestions> = ({ className }: ISuggestions) => {
           <ul className="flex flex-col w-[20vw] text-xs bg-white rounded-md m-1 p-1">
             {selectionState.fromSuggestions.map((item: IPlaceSuggestion) => (
               <li
-                className="m-1 p-1 cursor-pointer hover:bg-slate-300 rounded-md"
+                className="m-1 p-1 cursor-pointer hover:bg-slate-300 rounded-md flex items-center"
                 key={item.place_id}
                 data-item-data={JSON.stringify(item)}
                 onClick={selectHandler}
               >
+                <span className="m-1 p-1">
+                  <FaCity></FaCity>
+                </span>
                 {item.description}
               </li>
             ))}
