@@ -16,6 +16,7 @@ interface ISuggestionSelectionState {
   toIsSelected: boolean;
   fromInput: string;
   toInput: string;
+  date: string;
 }
 
 const initialState: ISuggestionSelectionState = {
@@ -31,6 +32,7 @@ const initialState: ISuggestionSelectionState = {
   toIsSelected: false,
   fromInput: "",
   toInput: "",
+  date: "",
 };
 
 const SuggestionSelectionSlice = createSlice({
@@ -44,6 +46,9 @@ const SuggestionSelectionSlice = createSlice({
       if (action.payload == "to") {
         state.toSuggestions = [];
       }
+    },
+    setDate(state, action: PayloadAction<string>) {
+      state.date = action.payload;
     },
     setFromSelections(state, action: PayloadAction<IPlaceSuggestion>) {
       state.fromDescription = action.payload.description;

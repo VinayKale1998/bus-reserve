@@ -19,12 +19,14 @@ const ToAutoSuggestion = function InputRef({
     <div
       className={`${className} ${
         isFocused ? "bg-slate-200" : "bg-white"
-      } place-field `}
+      } place-field  hover:bg-slate-200 overflow-hidden `}
       onFocus={divFocusHandler}
       tabIndex={-1}
     >
       <label
-        className={`${input.trim().length === 0 && !isFocused && "text-2xl"}`}
+        className={`${
+          input.trim().length === 0 && !isFocused && "text-2xl font-550"
+        } font-thin `}
       >
         To
       </label>
@@ -37,7 +39,7 @@ const ToAutoSuggestion = function InputRef({
         value={input}
         className={`${
           !isFocused && input.trim().length === 0 && "hidden"
-        } p-1 outline-none text-sm sm:text-md lg:text-lg xl:text-lg bg-transparent `}
+        } p-1 outline-none text-sm sm:text-md lg:text-lg xl:text-xl bg-transparent font-semibold `}
         onChange={inputHandler}
         onBlur={blurHandler}
         autoComplete="off"

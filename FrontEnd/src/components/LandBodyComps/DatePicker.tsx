@@ -5,24 +5,39 @@ import { type FC } from "react";
 import moment from "moment";
 import { IDatePicker } from "../../types/mainComps/DatePicker";
 import { FaRegCalendarAlt } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store/store";
+import { SuggestionSelectionSliceActions } from "../../store/slices/SuggestionSelectionSlice";
 
 const DatePicker: FC<IDatePicker> = ({ className }: IDatePicker) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [fromattedDate, formatDate] = useState("");
   const [formattedDay, formatDay] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     formatDate(() => moment(selectedDate).format("DD MMM"));
     formatDay(() => moment(selectedDate).format("ddd"));
+
+    if (selectedDate !== null) {
+      dispatch(
+        SuggestionSelectionSliceActions.setDate(selectedDate!.toISOString())
+      );
+    }
   }, [selectedDate]);
+
+  const changehandler = (date: Date | null) => {
+    setSelectedDate(date);
+    setIsOpen(false);
+  };
 
   return (
     <div className={className}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`${
-          isOpen && "hidden"
+          isOpen && ""
         } flex flex-col items-center h-[10vh]  rounded-md p-1  justify-center w-[8vw] bg-white`}
       >
         <span>Date</span>
@@ -36,15 +51,11 @@ const DatePicker: FC<IDatePicker> = ({ className }: IDatePicker) => {
       </button>
       {isOpen && (
         <ReactDatePicker
-          className="relative left-10 min-h-[8vh] "
+          className="datepicker"
           selected={selectedDate}
           minDate={new Date()}
           dateFormat={"yyyy-MM-dd"}
-          onChange={(date: Date | null) => {
-            setSelectedDate(date);
-            console.log(moment(date).format("YYYY-MM-DD-dd"));
-            setIsOpen(false);
-          }}
+          onChange={changehandler}
           onClickOutside={() => setIsOpen(false)}
           inline
         />

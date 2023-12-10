@@ -28,7 +28,7 @@ const useFromAutoSuggestion = () => {
     target.select();
   };
 
-  const blurHandler: React.ChangeEventHandler<HTMLInputElement> = () => {
+  const blurHandler: React.FocusEventHandler<HTMLInputElement> = () => {
     setFocused(false);
   };
   const divFocusHandler: React.FocusEventHandler<HTMLInputElement> = () => {

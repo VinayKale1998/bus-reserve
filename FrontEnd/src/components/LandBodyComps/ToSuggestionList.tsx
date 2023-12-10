@@ -1,4 +1,3 @@
-import Card from "../../reusableComponents/Card";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, type RootState } from "../../store/store";
 import { FC } from "react";

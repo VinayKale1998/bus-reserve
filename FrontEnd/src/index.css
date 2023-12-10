@@ -33,3 +33,10 @@ label {
 .place-field {
   user-select: none;
 }
+
+.react-datepicker {
+  position: absolute;
+  height: auto;
+  margin-top: 20px;
+  left: -40px;
+}

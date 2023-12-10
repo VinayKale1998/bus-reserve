@@ -2,7 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontWeight: {
+        550: "550",
+      },
+    },
   },
   plugins: [],
 };

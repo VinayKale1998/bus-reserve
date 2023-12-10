@@ -1,3 +1,1 @@
-export interface Icard {
-  className: string;
-}
+export interface Icard extends React.HTMLAttributes<HTMLDivElement> {}
