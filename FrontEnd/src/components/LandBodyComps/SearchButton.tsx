@@ -11,12 +11,12 @@ const SearchButton: FC<ISearchButtonProps> = ({
 }: ISearchButtonProps) => {
   return (
     <Button
-      className="bg-white mx-1 rounded-3xl text-xl p-2 min-h-[100px] hover:bg-purple-900 hover:text-white font-bold"
+      className="bg-white mx-1 rounded-3xl text-xl p-4 min-h-[100px] hover:bg-purple-900 hover:text-white font-bold"
       type="button"
       onClick={submitHandler}
     >
       {" "}
-      SEARCH BUSES
+      EXPLORE JOURNEYS
     </Button>
   );
 };

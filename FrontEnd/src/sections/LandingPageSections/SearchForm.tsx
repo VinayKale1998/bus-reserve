@@ -10,8 +10,8 @@ import { useRef } from "react";
 import { RootState } from "../../store/store";
 
 const SearchForm = () => {
-  const fromFieldRef = useRef<HTMLInputElement | null>(null);
-  const toFieldRef = useRef<HTMLInputElement | null>(null);
+  const fromFieldRef = useRef<HTMLInputElement>(null);
+  const toFieldRef = useRef<HTMLInputElement>(null);
   const state = useSelector(
     (state: RootState) => state.SuggestionSelectionSlice
   );
@@ -21,7 +21,12 @@ const SearchForm = () => {
       toPlaceId: state.toPlaceId,
       date: state.date,
     };
-    console.log(searchDetails);
+
+    if (searchDetails.fromPlaceId == "") {
+      fromFieldRef.current?.focus();
+    } else if (searchDetails.toPlaceId == "") {
+      toFieldRef.current?.focus();
+    }
   };
 
   return (
