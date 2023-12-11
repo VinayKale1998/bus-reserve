@@ -8,14 +8,17 @@ import { ISearchDetails } from "../../types/mainComps/ISearchDetails";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
 import { RootState } from "../../store/store";
+import { useNavigate } from "react-router-dom";
 
 const SearchForm = () => {
   const fromFieldRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
   const toFieldRef = useRef<HTMLInputElement>(null);
   const state = useSelector(
     (state: RootState) => state.SuggestionSelectionSlice
   );
   const submitHandler = () => {
+    navigate("/trips");
     const searchDetails: ISearchDetails = {
       fromPlaceId: state.fromPlaceId,
       toPlaceId: state.toPlaceId,
@@ -27,6 +30,8 @@ const SearchForm = () => {
     } else if (searchDetails.toPlaceId == "") {
       toFieldRef.current?.focus();
     }
+
+    console.log(searchDetails);
   };
 
   return (

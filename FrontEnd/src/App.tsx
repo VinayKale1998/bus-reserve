@@ -1,10 +1,11 @@
-import LandingPage from "./pages/LandingPage";
+import { BrowserRouter } from "react-router-dom";
+import AnimatedRoutes from "./router/AnimatedRoutes";
 
 function App(): JSX.Element {
   return (
-    <main className="w-[100vw] border border-1 border-black">
-      <LandingPage />
-    </main>
+    <BrowserRouter>
+      <AnimatedRoutes></AnimatedRoutes>
+    </BrowserRouter>
   );
 }
 

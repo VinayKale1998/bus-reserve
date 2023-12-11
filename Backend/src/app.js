@@ -6,12 +6,12 @@ const signUpRoute = require("./routes/signup");
 const { secureApp } = require("./utils/Security");
 const redisRoute = require("./routes/redis");
 const signInRoute = require("./routes/signin");
-const suggestionRoute = require("./routes/suggestions");
+// const suggestionRoute = require("./routes/suggestions");
 //wrapping the secureApp within the mainApp
 mainApp.use(secureApp);
 
 mainApp.use("/api/signup", signUpRoute);
-mainApp.use("/api/suggestion", suggestionRoute);
+// mainApp.use("/api/suggestion", suggestionRoute);
 mainApp.use("/api/signin", signInRoute);
 mainApp.use("/api/trips", tripRoutes);
 // mainApp.use("/api/redisConn", redisRoute);

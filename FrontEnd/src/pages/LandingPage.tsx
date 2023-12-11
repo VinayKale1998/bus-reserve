@@ -1,15 +1,24 @@
 import { ILandingPage } from "../types/pages/landingpage";
 import { type FC } from "react";
 import Header from "../sections/LandingPageSections/Header";
+import { motion } from "framer-motion";
+import { landingPageVariants, pageTranistion } from "../variants/PageVariants";
 
 import SearchForm from "../sections/LandingPageSections/SearchForm";
 
 const LandingPage: FC<ILandingPage> = () => {
   return (
-    <section className="landing-page relative min-h-[100vh]">
+    <motion.section
+      className="landing-page relative min-h-[100vh]"
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={landingPageVariants}
+      transition={pageTranistion}
+    >
       <Header></Header>
       <SearchForm></SearchForm>
-    </section>
+    </motion.section>
   );
 };
 

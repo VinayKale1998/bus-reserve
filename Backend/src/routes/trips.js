@@ -7,9 +7,8 @@ const { verifyToken } = require("../helpers/authController");
 
 const { listOfTimes, buses } = require("../helpers/dummy");
 
-tripRoutes.post("/createTrip", verifyToken, checkPresent, async (req, res) => {
-  console.log("passed user ", req.user);
-  let { from, to, date } = req.body;
+tripRoutes.post("/createTrip", checkPresent, async (req, res) => {
+  let { fromPlaceId, toPlaceId, date } = req.body;
   let times = listOfTimes(date);
   let tripsCreated = [];
   for (let i = 1; i < times.length; i++) {

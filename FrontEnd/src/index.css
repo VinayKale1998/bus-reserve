@@ -13,11 +13,12 @@
   padding: 0;
 }
 
-.landing-page {
+body {
   background-image: url("./assets/Background.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  height: 100vh;
 }
 
 span {
