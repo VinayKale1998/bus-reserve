@@ -54,9 +54,17 @@ const SuggestionSelectionSlice = createSlice({
       state.fromDescription = action.payload.description;
       state.fromPlaceId = action.payload.place_id;
     },
+    removeFromSelections(state) {
+      state.fromDescription = "";
+      state.fromPlaceId = "";
+    },
     setToSelections(state, action: PayloadAction<IPlaceSuggestion>) {
       state.toDescription = action.payload.description;
       state.toPlaceId = action.payload.place_id;
+    },
+    removeToSelections(state) {
+      state.toDescription = "";
+      state.toPlaceId = "";
     },
 
     setFromInput(state, action: PayloadAction<string>) {
@@ -96,8 +104,6 @@ const SuggestionSelectionSlice = createSlice({
       .addCase(
         fetchToAutoSuggestion.fulfilled,
         (state, action: PayloadAction<IPlaceSuggestion[]>) => {
-          console.log(action.payload);
-          console.log(action.payload);
           state.loading = false;
           state.toSuggestions = action.payload;
         }

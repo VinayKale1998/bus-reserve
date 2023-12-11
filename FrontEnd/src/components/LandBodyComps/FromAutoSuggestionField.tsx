@@ -1,52 +1,57 @@
-import { IinputRef } from "../../types/reusables/IinputRef";
+import { IinputRefProps } from "../../types/reusables/IinputRefProps";
 import useFromAutoSuggestion from "../../hooks/useFromAutoSuggestion";
+import { SlLocationPin } from "react-icons/sl";
+import { forwardRef } from "react";
 
-const FromAutoSuggestion = function InputRef({
-  type,
-  className,
-  uniqueKey,
-}: IinputRef) {
-  const {
-    input,
-    inputHandler,
-    focusHandler,
-    isFocused,
-    blurHandler,
-    divFocusHandler,
-  } = useFromAutoSuggestion();
+const FromAutoSuggestion = forwardRef<HTMLInputElement, IinputRefProps>(
+  ({ type, className, uniqueKey }: IinputRefProps, ref) => {
+    const {
+      input,
+      inputHandler,
+      focusHandler,
+      isFocused,
+      blurHandler,
+      divFocusHandler,
+    } = useFromAutoSuggestion();
 
-  return (
-    <div
-      className={`${className} ${
-        isFocused ? "bg-slate-200" : "bg-white"
-      }  place-field hover:bg-slate-200 overflow-hidden `}
-      onFocus={divFocusHandler}
-      tabIndex={-1}
-    >
-      <label
-        className={`${
-          input.trim().length == 0 && !isFocused && "text-2xl "
-        } font-thin`}
+    return (
+      <div
+        className={`${className} ${
+          isFocused ? "bg-slate-200" : "bg-white"
+        }  place-field hover:bg-slate-200 overflow-hidden `}
+        onFocus={divFocusHandler}
+        tabIndex={-1}
       >
-        From
-      </label>
+        {isFocused && input.length == 0 && (
+          <label className={`font-thin mx-2`}>From</label>
+        )}
+        {input.length !== 0 && <label className={`font-thin mx-2`}>From</label>}
 
-      <input
-        type={type}
-        name="from"
-        id="from"
-        key={uniqueKey}
-        value={input}
-        className={`${
-          !isFocused && input.trim().length === 0 && "hidden"
-        } p-1 outline-none text-sm sm:text-md lg:text-lg xl:text-xl bg-transparent font-semibold`}
-        onChange={inputHandler}
-        onFocus={focusHandler}
-        onBlur={blurHandler}
-        autoComplete="off"
-      />
-    </div>
-  );
-};
+        <div className="flex items-center">
+          {" "}
+          <SlLocationPin className="text-black text-2xl mx-2 "></SlLocationPin>
+          {input.trim().length == 0 && !isFocused && (
+            <label className={`text-xl font-bold mx-2`}>From</label>
+          )}
+          <input
+            type={type}
+            name="from"
+            id="from"
+            ref={ref}
+            key={uniqueKey}
+            value={input}
+            className={`${
+              !isFocused && input.trim().length === 0 && "hidden"
+            } p-1 outline-none text-sm sm:text-md lg:text-lg xl:text-xl bg-transparent font-semibold w-full `}
+            onChange={inputHandler}
+            onFocus={focusHandler}
+            onBlur={blurHandler}
+            autoComplete="off"
+          />
+        </div>
+      </div>
+    );
+  }
+);
 
 export default FromAutoSuggestion;

@@ -41,6 +41,9 @@ const useToAutoSuggestion = () => {
   ) => {
     dispatch(SuggestionSelectionSliceActions.setToIsSelected(false));
     dispatch(SuggestionSelectionSliceActions.setToInput(event.target.value));
+    if (event.target.value === "") {
+      dispatch(SuggestionSelectionSliceActions.removeToSelections());
+    }
   };
 
   useEffect(() => {

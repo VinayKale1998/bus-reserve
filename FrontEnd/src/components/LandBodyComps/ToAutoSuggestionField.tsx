@@ -1,51 +1,56 @@
-import { IinputRef } from "../../types/reusables/IinputRef";
+import { IinputRefProps } from "../../types/reusables/IinputRefProps";
 import useToAutoSuggestion from "../../hooks/useToAutoSuggestion";
+import { TbLocation } from "react-icons/tb";
+import { forwardRef } from "react";
 
-const ToAutoSuggestion = function InputRef({
-  type,
-  className,
-  uniqueKey,
-}: IinputRef) {
-  const {
-    input,
-    inputHandler,
-    focusHandler,
-    isFocused,
-    blurHandler,
-    divFocusHandler,
-  } = useToAutoSuggestion();
+const ToAutoSuggestion = forwardRef<HTMLInputElement, IinputRefProps>(
+  ({ type, className, uniqueKey }: IinputRefProps, ref) => {
+    const {
+      input,
+      inputHandler,
+      focusHandler,
+      isFocused,
+      blurHandler,
+      divFocusHandler,
+    } = useToAutoSuggestion();
 
-  return (
-    <div
-      className={`${className} ${
-        isFocused ? "bg-slate-200" : "bg-white"
-      } place-field  hover:bg-slate-200 overflow-hidden `}
-      onFocus={divFocusHandler}
-      tabIndex={-1}
-    >
-      <label
-        className={`${
-          input.trim().length === 0 && !isFocused && "text-2xl font-550"
-        } font-thin `}
+    return (
+      <div
+        className={`${className} ${
+          isFocused ? "bg-slate-200" : "bg-white"
+        } place-field  hover:bg-slate-200 overflow-hidden `}
+        onFocus={divFocusHandler}
+        tabIndex={-1}
       >
-        To
-      </label>
-      <input
-        type={type}
-        name="to"
-        id="to"
-        onFocus={focusHandler}
-        key={uniqueKey}
-        value={input}
-        className={`${
-          !isFocused && input.trim().length === 0 && "hidden"
-        } p-1 outline-none text-sm sm:text-md lg:text-lg xl:text-xl bg-transparent font-semibold `}
-        onChange={inputHandler}
-        onBlur={blurHandler}
-        autoComplete="off"
-      />
-    </div>
-  );
-};
+        {isFocused && input.length == 0 && (
+          <label className={`font-thin mx-2`}>To</label>
+        )}
+        {input.length !== 0 && <label className={`font-thin mx-2`}>To</label>}
+        <div className="flex items-center">
+          {" "}
+          <TbLocation className="text-black text-2xl mx-2 "></TbLocation>
+          {input.trim().length == 0 && !isFocused && (
+            <label className={`text-xl font-bold mx-2`}>To</label>
+          )}
+          <input
+            type={type}
+            name="to"
+            id="to"
+            ref={ref}
+            onFocus={focusHandler}
+            key={uniqueKey}
+            value={input}
+            className={`${
+              !isFocused && input.trim().length === 0 && "hidden"
+            } p-1 outline-none text-sm sm:text-md lg:text-lg xl:text-xl bg-transparent font-semibold  w-full `}
+            onChange={inputHandler}
+            onBlur={blurHandler}
+            autoComplete="off"
+          />
+        </div>
+      </div>
+    );
+  }
+);
 
 export default ToAutoSuggestion;

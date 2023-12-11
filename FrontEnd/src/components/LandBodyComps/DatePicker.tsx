@@ -38,20 +38,20 @@ const DatePicker: FC<IDatePicker> = ({ className }: IDatePicker) => {
         onClick={() => setIsOpen(!isOpen)}
         className={`${
           isOpen && ""
-        } flex flex-col items-center h-[10vh]  rounded-md p-1  justify-center w-[8vw] bg-white`}
+        } flex flex-col items-start h-[100px] mx-1 rounded-3xl p-1 justify-center w-[8vw] bg-white`}
       >
-        <span>Date</span>
-        <span className="text-xl flex space-x-2  items-center">
+        <span className="mx-auto">Date</span>
+        <span className="text-xl flex space-x-4  items-center mx-2">
           <span>
             <FaRegCalendarAlt />
           </span>
-          <span>{fromattedDate}</span>
+          <span className="font-bold">{fromattedDate}</span>
         </span>
-        <span>{formattedDay}</span>
+        <span className="mx-auto">{formattedDay}</span>
       </button>
       {isOpen && (
         <ReactDatePicker
-          className="datepicker"
+          className="datepicker" //react-datepicker is the class name internally
           selected={selectedDate}
           minDate={new Date()}
           dateFormat={"yyyy-MM-dd"}

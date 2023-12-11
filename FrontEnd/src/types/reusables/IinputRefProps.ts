@@ -1,4 +1,4 @@
-export interface IinputRef {
+export interface IinputRefProps {
   type: string;
   uniqueKey: string;
   value?: string;
